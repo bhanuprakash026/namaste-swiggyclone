@@ -1,0 +1,130 @@
+.nav-bar-container{
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+
+.logo-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-img{
+  height: 80px;
+  cursor: pointer;
+}
+
+.res-cards-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+.nav-links-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-links-container > ul {
+  display: flex;
+  list-style-type: none;
+}
+
+.nav-links-container > ul > li {
+  padding-right: 35px;
+  cursor: pointer;
+  
+}
+
+/* RestaurantCard.css */
+.res-card-container {
+  width: 250px; /* Decrease the width to make it smaller */
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 5px; /* Decrease the padding to reduce the size */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.res-card-container:hover {
+  transform: scale(1.05);
+}
+
+.res-Img {
+  width: 100%;
+  height: 150px; /* Decrease the height to make the image smaller */
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+h2 {
+  font-size: 1.2rem; /* Reduce the font size for the restaurant name */
+  margin: 5px 0; /* Reduce the margin for the restaurant name */
+}
+
+h4 {
+  font-size: 1rem; /* Reduce the font size for the cuisines */
+  color: #555;
+}
+
+p {
+  font-size: 0.9rem; /* Reduce the font size for locality and rating */
+  color: #777;
+}
+
+/* Add this CSS to style your input and buttons in the same line */
+.filter-group {
+  display: flex; /* Use flexbox to align items horizontally */
+  align-items: center; /* Center items vertically within the container */
+}
+
+.search-container {
+  display: flex; /* Use flexbox to align input and button horizontally */
+  align-items: center; /* Center items vertically within the container */
+}
+
+.search {
+  flex: 1; /* Allow the input to take up remaining space */
+  margin-right: 10px; /* Add some spacing between the input and button */
+}
+
+.filter-btn {
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+/* Add this CSS to style your search input and button in the same line */
+.filter-group {
+  display: flex; /* Use flexbox to align items horizontally */
+  align-items: center; /* Center items vertically within the container */
+}
+
+.search-btn {
+  flex: 1; /* Allow the input to take up remaining space */
+  margin-right: 10px; /* Add some spacing between the input and button */
+  border: 1px solid #ccc; /* Add a border to the input for styling */
+  padding: 5px; /* Add padding to the input for styling */
+   /* Add border radius for rounded corners */
+  background-color: #007BFF;
+  color: white;
+  padding: 10px 20px;
+  
+}
+
+.filter-btn {
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
