@@ -3,18 +3,22 @@ import { Link } from "react-router-dom";
 
 
 const Header = () => {
+
+
+
   return (
-    <div className="nav-bar-container">
+    <div className="flex items-center justify-between p-1 shadow-md mb-2">
       <div className="logo-container">
-        <img src="https://graphicsfamily.com/wp-content/uploads/edd/2021/06/Editable-Photoshop-Food-Logo-Design-PNG-Transparent.png" className="logo-img" alt="logo"/>
+        <Link to='/'><img className="w-24" src="https://graphicsfamily.com/wp-content/uploads/edd/2021/06/Editable-Photoshop-Food-Logo-Design-PNG-Transparent.png" alt="logo"/></Link>
+        
       </div>
 
       <div className="nav-links-container">
-        <ul>
-          <li><Link to='/'>Home</Link></li>
-          <li><Link to="/about">About Us</Link></li>
-          <li><Link to="contact">Contact Us</Link></li>
-          <li>Cart</li>
+        <ul className="flex">
+          <li className="px-4"><Link to='/'>Home</Link></li>
+          <li className="px-4"><Link to="/about">About Us</Link></li>
+          <li className="px-4"><Link to="contact">Contact Us</Link></li>
+          <li className="px-4">Cart</li>
         </ul>
       </div>
     </div>
