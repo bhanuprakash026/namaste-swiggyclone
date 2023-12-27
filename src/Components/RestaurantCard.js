@@ -5,7 +5,7 @@ const RestaurantCard = (resInfo) => {
     resInfo?.resInfo?.info;
 
   return (
-    <div className="m-4 w-[300px] bg-white shadow-lg rounded-lg overflow-hidden transition duration-300 ease-in-out transform hover:scale-105">
+    <div className="m-4 w-[265px] h-[320px] bg-white shadow-lg rounded-lg overflow-hidden transition duration-300 ease-in-out transform hover:scale-105">
       <div>
         <img
           src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${cloudinaryImageId}`}

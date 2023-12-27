@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import RestaurantCard, { withPromoted } from "./RestaurantCard";
 import { Link } from "react-router-dom";
 import { Slick } from './Slick'
@@ -19,8 +19,8 @@ const Body = () => {
   const fetchResList = async () => {
     const data = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.4375432&lng=78.3662681&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING')
     const json = await data.json()
-    setResList(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-    setFilteredResLists(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+    setResList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+    setFilteredResLists(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     setSliders(json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info)
 
   }

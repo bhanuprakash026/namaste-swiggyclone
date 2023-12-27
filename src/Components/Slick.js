@@ -39,7 +39,7 @@ export const Slick = (props) => {
   const settings = {
     dots: true,
     infinite: true,
-    slidesToShow: 3,
+    slidesToShow: 5,
     slidesToScroll: 1,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />
@@ -53,7 +53,7 @@ export const Slick = (props) => {
 
         {slides?.map((e) => (
           <div className="m-4 px-4" key={e.id}>
-            <img src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_850,h_504/${e.imageId}`} alt={e?.accessibility?.altText} />
+            <img className="w-[200px] h-[220px]" src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_850,h_504/${e.imageId}`} alt={e?.accessibility?.altText} />
           </div>
         ))}
       </Slider>
