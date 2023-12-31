@@ -1,38 +1,58 @@
-import  { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import RestaurantCard, { withPromoted } from "./RestaurantCard";
 import { Link } from "react-router-dom";
 import { Slick } from './Slick'
 import useOnlineStatus from "../utils/useOnlineStatus";
+import LocationContext from "../utils/Contexts/LocationContext";
+
+const apiConstants = {
+  initial: "INITIAL",
+  success: "SUCCESS",
+  fail: "FAIL",
+  inProgress: "IN_PROGRESS",
+}
 
 const Body = () => {
   const [resList, setResList] = useState([])
   const [searchText, setSearchText] = useState("")
   const [filteredResLists, setFilteredResLists] = useState([])
   const [sliders, setSliders] = useState([])
+  const status = useOnlineStatus()
+  const [apiStatus, setApiStatus] = useState(apiConstants.initial)
+
 
   const RestaurantWithPromoted = withPromoted(RestaurantCard)
+  const { lat, lng } = useContext(LocationContext)
+  console.log(lat,)
+
 
   useEffect(() => {
-    fetchResList()
-  }, [])
+    fetchResList() // eslint-disable-next-line
+  }, [lat])
 
   const fetchResList = async () => {
-    const data = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.4375432&lng=78.3662681&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING')
-    const json = await data.json()
-    setResList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-    setFilteredResLists(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-    setSliders(json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info)
+    setApiStatus(apiConstants.inProgress)
+    const data = await fetch(`https://www.swiggy.com/dapi/restaurants/list/v5?lat=${lat}&lng=${lng}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`)
+    if (data.ok) {
+      const json = await data.json()
+      setResList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+      setFilteredResLists(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+      setSliders(json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info)
+      setApiStatus(apiConstants.success)
+    }
 
   }
 
-
-  if (!useOnlineStatus()) {
-    return <div>Offline</div>
-  } else if (filteredResLists === null) {
-    return <h1>Loading</h1>
+  const renderOfflineView = () => {
+    return <h1>Offline.....</h1>;
   }
 
-  return (
+  const renderLoadingView = () => {
+    return <h1>Loading....</h1>;
+  }
+
+  const renderMeus = () => {
+    return (
     <div className="w-10/12 mx-auto">
       <Slick slides={sliders} />
       <div className="body-container">
@@ -68,6 +88,28 @@ const Body = () => {
         </div>
       </div>
     </div>
+    )
+  }
+
+
+  const renderResMenu = () => {
+    if (!status) {
+      return renderOfflineView()
+    } else if (status && apiStatus === apiConstants.inProgress) {
+      return renderLoadingView()
+    } else if (status && apiStatus === apiConstants.success) {
+      return renderMeus()
+    }
+
+  }
+
+
+   
+
+  return (
+    <>
+      {renderResMenu()}
+    </>
   )
 }
 

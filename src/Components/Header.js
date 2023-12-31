@@ -1,11 +1,14 @@
-import React, { useState,} from "react";
+import React, { useState, useContext} from "react";
 import { Link } from "react-router-dom";
 import { FaLocationDot } from "react-icons/fa6";
 import LocationPopup from "./LocationPopup";
+import LocationContext from "../utils/Contexts/LocationContext";
 
 
 const Header = () => {
   const [showModal, setShowModal] = useState(false);
+  const data = useContext(LocationContext)
+  console.log('header from', data)
   
   
   return (
@@ -17,7 +20,6 @@ const Header = () => {
               <img className="w-24" src="https://graphicsfamily.com/wp-content/uploads/edd/2021/06/Editable-Photoshop-Food-Logo-Design-PNG-Transparent.png" alt="logo" />
             </Link>
             <FaLocationDot style={{ color: "orange", fontSize: "25px", marginLeft: "35px", cursor: "pointer" }} onClick={() => {
-              console.log("Clicked")
               setShowModal(true)
             }} />
             {showModal && <LocationPopup onClose={() => setShowModal(false)}/>}
